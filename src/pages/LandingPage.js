@@ -1,4 +1,5 @@
 import React, { useContext, useState } from "react";
+import CanOptionsCard from "../components/CanOptionsCard";
 import WallForm from "../components/WallForm";
 import { PaintContext } from "../context/PaintContext";
 import { cansPossibilities, filterUniqueValue, multipleCansPossibility } from "../utils/calcCanOptions";
@@ -23,10 +24,10 @@ function LandingPage() {
   return (
     <>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
-        <WallForm></WallForm>
-        <WallForm></WallForm>
-        <WallForm></WallForm>
-        <WallForm></WallForm>
+        <WallForm />
+        <WallForm />
+        <WallForm />
+        <WallForm />
       </div>
       <p>Total: { total } litros</p>
       <button onClick={ handleCanOptions }>Calcular quantidade de latas</button>
@@ -35,10 +36,10 @@ function LandingPage() {
           { canQtds && canQtds.map((value) => {
             if (value.cansNeeded) {
               return (
-                <div key={ value.liters }>
-                  <p>Tamanho da lata: { value.liters }</p>
-                  <p>Quantidade necessária: { Math.ceil(value.cansNeeded) } latas</p>
-                </div>
+                <CanOptionsCard
+                  canType={ value.liters }
+                  quantity={ Math.ceil(value.cansNeeded) }
+                />
               )
             }
             return ''
@@ -48,10 +49,7 @@ function LandingPage() {
           { canQtds && canQtds.map((value) => {
             if (value.counter) {
               return (
-                <div key={ value.liters }>
-                  <p>Tamanho da lata: { value.liters }</p>
-                  <p> Quantidade necessária: { value.counter } </p>
-                </div>
+                <CanOptionsCard canType={ value.liters } quantity={ value.counter } />
               )
             }
             return ''
