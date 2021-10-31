@@ -27,7 +27,7 @@ const doorAndWindowAreaCheck = (windowQtd, doorQtd, wallArea) => {
   const { windowAndDoorArea, paintableArea } = calcPaitableArea(windowQtd, doorQtd, wallArea);
 
   if (windowAndDoorArea >= wallArea * 0.5) {
-    throw new Error('Área da porta e parade inválidas');
+    throw new Error('Área da porta e parede inválidas');
   }
 
   return paintableArea;

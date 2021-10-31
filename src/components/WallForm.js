@@ -1,6 +1,8 @@
 import React, { useState, useContext } from 'react';
 import { PaintContext } from '../context/PaintContext';
 import calcPaintLiters from '../utils/calcPaintLiters';
+import { Button } from './Button.sc';
+import { FormContainer } from './WallForm.sc';
 
 const INITIAL_STATE = {
   wallHeigth: 0,
@@ -41,7 +43,8 @@ function WallForm() {
   };
 
   return (
-    <div style={{display: 'flex', flexDirection:"column"}}>
+    <FormContainer>
+
       <form onSubmit={handleSubmit}>
 
         <div>
@@ -113,11 +116,13 @@ function WallForm() {
           </div>
         ) }
 
-        <button type="submit">Enviar Valores</button>
+        <Button type="submit">Enviar Valores</Button>
 
       </form>
+
       { errorMsg && <span>{ errorMsg }</span> }
-    </div>
+
+    </FormContainer>
   )
 }
 

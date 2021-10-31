@@ -1,8 +1,10 @@
 import React, { useContext, useState } from "react";
+import { Button } from "../components/Button.sc";
 import CanOptionsCard from "../components/CanOptionsCard";
 import WallForm from "../components/WallForm";
 import { PaintContext } from "../context/PaintContext";
 import { cansPossibilities, filterUniqueValue, multipleCansPossibility } from "../utils/calcCanOptions";
+import { IndividualCanDiv, MiddleSection, MultipleCansDiv, OptionsContainer, WallSelectionGroup } from "./LandingPage.sc";
 
 const CAN_TYPES = [
   {liters: 0.5, counter: 0},
@@ -23,16 +25,23 @@ function LandingPage() {
 
   return (
     <>
-      <div style={{display: 'flex', justifyContent: 'space-between'}}>
+      <WallSelectionGroup>
         <WallForm />
         <WallForm />
         <WallForm />
         <WallForm />
-      </div>
-      <p>Total: { total } litros</p>
-      <button onClick={ handleCanOptions }>Calcular quantidade de latas</button>
-      <div style={{display: 'flex', justifyContent: 'space-around'}}>
-        <div>
+      </WallSelectionGroup>
+
+      <MiddleSection>
+        <h4>Total: { total } litros</h4>
+
+        <Button onClick={ handleCanOptions }>Calcular quantidade de latas necessárias</Button>
+      </MiddleSection>
+
+      <OptionsContainer>
+
+        <IndividualCanDiv>
+          <p>Opção 1: Latas do mesmo tamanho</p>
           { canQtds && canQtds.map((value) => {
             if (value.cansNeeded) {
               return (
@@ -44,8 +53,10 @@ function LandingPage() {
             }
             return ''
           }) }
-        </div>
-        <div>
+        </IndividualCanDiv>
+
+        <MultipleCansDiv>
+          <p>Opção 2: Multiplas latas</p>
           { canQtds && canQtds.map((value) => {
             if (value.counter) {
               return (
@@ -54,8 +65,10 @@ function LandingPage() {
             }
             return ''
           }) }
-        </div>
-      </div>
+        </MultipleCansDiv>
+
+      </OptionsContainer>
+
     </>
   )
 }
