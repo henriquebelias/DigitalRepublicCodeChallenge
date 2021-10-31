@@ -15,7 +15,7 @@ export function PaintProvider({ children }) {
   };
 
   const contextValue = {
-    total,
+    total: total.toFixed(2),
     wallHeigth,
     calcTotal,
     updateHeigth,
