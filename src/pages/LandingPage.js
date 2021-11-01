@@ -18,9 +18,11 @@ function LandingPage() {
   const [canQtds, setCanQtds] = useState([]);
 
   const handleCanOptions = () => {
-    cansPossibilities(total, CAN_TYPES)
-    const canArray = multipleCansPossibility(total, CAN_TYPES);
-    setCanQtds(filterUniqueValue(canArray));
+    if (+total) {
+      cansPossibilities(total, CAN_TYPES)
+      const canArray = multipleCansPossibility(total, CAN_TYPES);
+      setCanQtds(filterUniqueValue(canArray));
+    }
   }
 
   return (
