@@ -46,6 +46,7 @@ function LandingPage() {
             if (value.cansNeeded) {
               return (
                 <CanOptionsCard
+                  key={ value.liters + value.cansNeeded }
                   canType={ value.liters }
                   quantity={ Math.ceil(value.cansNeeded) }
                 />
@@ -60,7 +61,11 @@ function LandingPage() {
           { canQtds && canQtds.map((value) => {
             if (value.counter) {
               return (
-                <CanOptionsCard canType={ value.liters } quantity={ value.counter } />
+                <CanOptionsCard
+                  key={ value.liters + value.liters }
+                  canType={ value.liters }
+                  quantity={ value.counter }
+                />
               )
             }
             return ''
